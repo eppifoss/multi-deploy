@@ -10,10 +10,10 @@ script:
   - docker run -e CI=true eppifoss/react-test npm test 
 
 after_success:
-  - docker build -t eppifoss/multi-client -f ./client
-  - docker build -t eppifoss/multi-server -f ./server
-  - docker build -t eppifoss/multi-worker -f ./worker
-  - docker build -t eppifoss/multi-nginx -f ./nginx
+  - docker build -t eppifoss/multi-client  ./client
+  - docker build -t eppifoss/multi-server  ./server
+  - docker build -t eppifoss/multi-worker  ./worker
+  - docker build -t eppifoss/multi-nginx  ./nginx
 
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
