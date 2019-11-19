@@ -24,8 +24,15 @@ after_success:
   - docker push eppifoss/multi-worker
   - docker push eppifoss/multi-nginx
 
-
-
-  
-
-
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: multi-docker
+  env: MultiDocker-env 
+  bucket_name: elasticbeanstalk-us-west-2-476578251364
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
